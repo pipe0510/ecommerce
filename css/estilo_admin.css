@@ -1,0 +1,58 @@
+.custom-navbar {
+            background-color: #184A78;
+        }
+        .footer {
+            background-color: #184A78;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+        .container-content {
+            margin-top: 80px; /* Ajustar según el tamaño del menú */
+            margin-bottom: 80px; /* Ajustar según el tamaño del pie de página */
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .delete-user {
+            cursor: pointer;
+            color: #dc3545;
+        }
+        .delete-user:hover {
+            color: #bb2d3b;
+        }
+        #userTable th {
+            text-align: center;
+        }
+        #userTable td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .delete-product {
+            cursor: pointer;
+            color: #dc3545;
+        }
+        .delete-product:hover {
+            color: #bb2d3b;
+        }
+        #productTable th {
+            text-align: center;
+        }
+        #productTable td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-btn {
+            width: 100px;
+            margin: 0 auto;
+            display: block;
+        }
+        .export-btn {
+            margin-bottom: 10px;
+        }
+
+        

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descripción breve de tu sitio web">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/stilo.css">
+    <link rel="stylesheet" href="css/stilo_modal.css">
+
+<body>
+<!-- Menú de Navegación -->
+<nav class="nav">
+    <div class="container"> 
+        <div class="title">Tienda Online</div> 
+        <ul class="menu">
+            <li><a href="dashboard.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#">Servicios</a>
+                <ul class="dropdown-menu">
+                    <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+                    <li><a href="hogar.html">Hogar</a></li>
+                    <li><a href="movil.html">Móvil</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Cuenta</a>
+                <ul class="dropdown-menu">
+                    <li><a href="login.html">Iniciar sesión</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#modalCrearUsuario">Crear usuario</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#" id="cerrarSesion" onclick="cerrar()">Cerrar sesión</a></li>
+            <li>
+                <a href="#"><i class="fas fa-shopping-cart"></i>Carrito</a>
+                <ul class="dropdown-menu" id="carrito">
+                    <!-- Aquí se mostrarán los productos del carrito -->
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<main class="wrapper">
+    <section class="carousel">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000"> 
+                    <center><img src="img/Antivirus.jpg" class="d-block w-5"></center>
+                    <div class="carousel-caption d-none d-md-block text-white">
+                        <h5>Licencias</h5>
+                        <!-- <p></p> -->
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000"> 
+                    <center><img src="img/hogar_tv.jpg" class="d-block w-5"></center>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 style="color: aliceblue;">Disfruta de nuestros canales HD.</h5>
+                        <!-- <p></p> -->                            
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000"> 
+                    <center><img src="img/pug.png" class="d-block w-5"></center>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 style="color: aliceblue;">Planes telefonicos al alcance de todos.</h5>
+                        <!-- <p></p> -->
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000"> 
+                    <center><img src="img/internet_familia.png" class="d-block w-5"></center>
+                    <div class="carousel-caption d-none d-md-block text-white">
+                                <h5 style="color: black;">Internet para la familia.</h5>
+                
+                        <!-- <p></p> -->
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section><!-- wrapper&carousel-end ./ -->
+    </p>
+</div>
+</div>
+</section><!-- hero ./ -->
+
+
+
+
+<!-- Modal de Crear Usuario -->
+<div class="modal fade" id="modalCrearUsuario" tabindex="-1" role="dialog" aria-labelledby="modalCrearUsuarioLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCrearUsuarioLabel">Crear Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="inputUsername">Usuario</label>
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Ingresa tu usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Contraseña</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCedula">Cédula</label>
+                        <input type="text" class="form-control" id="inputCedula" placeholder="Ingresa tu cédula">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Ingresa tu correo electrónico">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">Teléfono</label>
+                        <input type="text" class="form-control" id="inputPhone" placeholder="Ingresa tu teléfono">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputRole">Rol</label>
+                        <select class="form-control" id="inputRole">
+                            <option value="usuario">Usuario</option>
+                            <option value="administrador">Administrador</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Sección de Productos -->
+<div class="container mt-5">
+<div class="row">
+    <div class="col-md-4">
+        <div class="card product">
+            <img src="img/licencias.jpg" alt="Licencias" />
+            <div class="card-body">
+                <h5 class="card-title">Ciberseguridad</h5>
+                <p class="card-text">Protege tu dispositivo con nuestra licencia de antivirus. Mantén tu sistema seguro y libre de amenazas.</p>
+                <a href="ciberseguridad.html" class="btn btn-primary btn-comprar">Ver Producto</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card product">
+            <img src="img/plan_tv.jpg" alt="Cable HD" />
+            <div class="card-body">
+                <h5 class="card-title">Hogar</h5>
+                <p class="card-text">Descubre nuestra variedad de servicios de internet, televisión y llamadas diseñados para mantener tu hogar conectado y entretenido.</p>
+                <a href="hogar.html" class="btn btn-primary btn-comprar">Ver Producto</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card product">
+            <img src="img/plan_movil.jpg" alt="Planes Móviles" />
+            <div class="card-body">
+                <h5 class="card-title">Movil</h5>
+                <p class="card-text">Descubre nuestras ofertas de planes móviles. Mantente conectado donde quiera que vayas con nuestros planes flexibles y asequibles</p>
+                <a href="movil.html" class="btn btn-primary btn-comprar">Ver Producto</a>
+            </div>
+        </div>
+    </div>
+</div> 
+</div> 
+
+<!-- Pie de página -->
+<footer>
+<div class="container text-center">
+    <h3>Tienda Online&copy</h3>
+</div>
+</footer>
+
+</body>
+<script src="js/sc.js"></script>
+<script src="js/bootstrap/bootstrap.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>

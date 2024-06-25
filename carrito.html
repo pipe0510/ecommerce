@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <!-- Agregamos los estilos CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/stilo.css">
+    <link rel="stylesheet" href="css/stilo_modal.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- firebase -->
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>  
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <script src="js/conexion.js"> </script>
+
+  <script>
+    var db=firebase.firestore();
+    var storage=firebase.storage();
+  </script>
+  
+</head>
+<body>
+  
+    <nav class="nav">
+        <div class="container"> 
+            <div class="title">Tienda Online</div> 
+            <ul class="menu">
+                <li><a href="dashboard.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Servicios</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+                        <li><a href="hogar.html">Hogar</a></li>
+                        <li><a href="movil.html">Móvil</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Cuenta</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="login.html">Iniciar sesión</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#modalCrearUsuario">Crear usuario</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#" id="cerrarSesion" onclick="cerrar()">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+   
+    <div class="left-menu">
+        <ul>
+            <li><svg class="menu-icon" viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 004 14c0 1.42.49 2.73 1.16 3.77v.66C5.16 20.1 7.35 22 9 22c1.66 0 3.18-1.06 3.7-2.62h2.6c.52 1.56 2.04 2.62 3.7 2.62 1.65 0 3.84-1.9 3.84-3.57v-.66A5.995 5.995 0 0021 14c0-2.34-1.4-4.35-3.65-5.96zM9 20c-.83 0-1.5-.67-1.5-1.5S8.17 17 9 17s1.5.67 1.5 1.5S9.83 20 9 20zm3-7h-1v1c0 1.1-.9 2-2 2s-2-.9-2-2v-1H6v1c0 1.85 1.64 3.35 3.5 3.49V20h2v-2.51c1.86-.14 3.5-1.64 3.5-3.49v-1h-1v1c0 1.1-.9 2-2 2s-2-.9-2-2v-1zm7 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Ofertas Especiales</li>
+            <li><svg class="menu-icon" viewBox="0 0 24 24"><path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/></svg> Nuevos Lanzamientos</li>
+            <li><svg class="menu-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm7 10c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.11 7 3.11V11zm-11.59.59L6 13l4 4 8-8-1.41-1.42L10 14.17z"/></svg> Seguridad Movil</li>
+            <li><svg class="menu-icon" viewBox="0 0 24 24"><path d="M18 10.48V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.48l4 3.98v-11l-4 3.98zM10 12H8v2H6v-2H4v-2h2V8h2v2h2v2z"/></svg> Planes</li>
+            <li><svg class="menu-icon" viewBox="0 0 24 24"><path d="M16 6H8c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H8V8h8v8zM16 16H8v2h8v-2zM4 2h16v2H4zm8 18h8v2H12z"/></svg> Novedades</li>
+            <li><svg class="menu-icon" viewBox="0 0 24 24"><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg> Informacion</li>
+        </ul>
+ 
+    <div class="clock-container"></div>
+</div>
+
+    <br>
+    <h6>Productos a llevar</h6>
+    <br>
+   
+    <div class="table-responsive">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Valor</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="carrito-body">
+            <!-- Aquí se agregarán las filas de productos dinámicamente -->
+        </tbody>
+        <tfoot>
+            <tr id="totalRow">
+                <td colspan="2">Total Precio</td>
+                <td id="totalPrecio"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+    
+<div class="btn-container">
+    <div class="btn-icon-container" onclick="limpiarCarrito()">
+        <svg class="btn-icon delete-icon" viewBox="0 0 24 24">
+            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+        </svg>
+        <span>Limpiar</span>
+    </div>
+    <div class="btn-icon-container" onclick="confirmarCompra()">
+        <svg class="btn-icon confirm-icon" viewBox="0 0 24 24">
+            <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+        </svg>
+        <span>Confirmar</span>
+    </div>
+    <span id="notificacionCarrito" class="badge badge-primary">0</span>
+</div>
+<br>
+
+<script>
+    window.onload = function() {
+        cargarProductosEnCarrito();
+     };
+  </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.bundle.js"></script>
+    <script src="js/sc.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+       window.onload = function() {
+          cargarProductosEnCarrito();
+       };
+    </script>
+
+    <!-- Pie de página -->
+    <br><br>
+    <footer>
+        <div class="container text-center">
+            <h3>Grupo Desarollo&copy</h3>
+        </div>
+    </footer>
+
+</body>
+ <!-- llamamos codigo de las alertas -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</html>

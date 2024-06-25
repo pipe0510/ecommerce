@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descripción breve de tu sitio web">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/stilo.css">
+    <link rel="stylesheet" href="css/stilo_modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+<body>
+<!-- Menú de Navegación -->
+<nav class="nav">
+    <div class="container"> 
+        <div class="title">Tienda Online</div> 
+        <ul class="menu">
+            <li><a href="dashboard.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#">Servicios</a>
+                <ul class="dropdown-menu">
+                    <li><a href="ciberseguridad.html">Ciberseguridad</a></li>
+                    <li><a href="hogar.html">Hogar</a></li>
+                    <li><a href="movil.html">Móvil</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Cuenta</a>
+                <ul class="dropdown-menu">
+                    <li><a href="login.html">Iniciar sesión</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#modalCrearUsuario">Crear usuario</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#" id="cerrarSesion" onclick="cerrar()">Cerrar sesión</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="cart-toggle">
+                  <span class="cart-container">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                  </span>
+                </a>
+              </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Modal de Crear Usuario -->
+<div class="modal fade" id="modalCrearUsuario" tabindex="-1" role="dialog" aria-labelledby="modalCrearUsuarioLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCrearUsuarioLabel">Crear Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="inputUsername">Usuario</label>
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Ingresa tu usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Contraseña</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCedula">Cédula</label>
+                        <input type="text" class="form-control" id="inputCedula" placeholder="Ingresa tu cédula">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Ingresa tu correo electrónico">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">Teléfono</label>
+                        <input type="text" class="form-control" id="inputPhone" placeholder="Ingresa tu teléfono">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputRole">Rol</label>
+                        <select class="form-control" id="inputRole">
+                            <option value="usuario">Usuario</option>
+                            <option value="administrador">Administrador</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+       <!-- Modal de contacto -->
+       <div class="modal fade" id="modalContacto" tabindex="-1" role="dialog" aria-labelledby="modalContactoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalContactoLabel">Escríbenos</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputNombres">Nombres</label>
+                    <input type="text" class="form-control" id="inputNombres_C" placeholder="Nombres">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputApellidos">Apellidos</label>
+                    <input type="text" class="form-control" id="inputApellidos_C" placeholder="Apellidos" >
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="inputEmail_C" placeholder="Correo Electrónico">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputTelefono">Teléfono</label>
+                    <input type="tel" class="form-control" id="inputTelefono_C" placeholder="Teléfono">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputMensaje">Mensaje</label>
+                  <textarea class="form-control" id="inputMensaje_C" rows="4" placeholder="Escriba cual es su motivo de contacto"></textarea>
+                </div>
+                
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="checkDatos_C">
+                  <label class="form-check-label" for="checkDatos">Autorizo a "TIENDA ONLINE" para almacenar mis datos de acuerdo al cumplimiento de la ley 1581 de 2012</label>
+              </form>
+            </div>
+            <button id="btnenv"  class="btn btn-primary mt-3" onclick="Registrar_asesoria_c();">Enviar Mensaje</button>
+          </div>
+          </div>
+        </div>
+      </div>
+
+<div class="section">
+    <h2>Plan Hogar: Tu Portal hacia la Conexión Perfecta</h2>
+    <p1>¡Bienvenido a Plan Hogar, tu destino definitivo para la excelencia en servicios de fibra óptica, entretenimiento de primer nivel y telecomunicaciones de vanguardia! En nuestro universo digital, transformamos tus experiencias hogareñas, brindándote acceso a la mejor tecnología en conectividad y entretenimiento. Con nuestra fibra óptica de alta velocidad, navegación fluida y descargas instantáneas son solo el comienzo. Sumérgete en un mundo de entretenimiento sin límites con nuestros paquetes de canales cuidadosamente seleccionados, diseñados para satisfacer todos tus gustos y preferencias. Además, nuestras soluciones de telecomunicaciones te mantienen conectado con tus seres queridos en cualquier parte del mundo.</p1>
+    <br><br>   
+    <a href="#" data-toggle="modal" data-target="#modalContacto" class="btn btn-primary">Solicitar Asesoría</a>
+</div>
+
+
+<main class="wrapper">
+    <section class="carousel carousel-servicio-hogar">
+        <div id="carouselEjemplo" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselEjemplo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselEjemplo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselEjemplo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselEjemplo" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="4000"> 
+                    <center><img src="img/plan_hogar.gif" class="d-block w-100" style="max-height: 400px; object-fit: contain;"></center>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000"> 
+                    <center><img src="img/plan_hestandar.gif" class="d-block w-100" style="max-height: 400px; object-fit: contain;"></center>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000"> 
+                    <center><img src="img/plan_hintermedio.gif" class="d-block w-100" style="max-height: 400px; object-fit: contain;"></center>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000"> 
+                    <center><img src="img/plan_hpremium.gif" class="d-block w-100" style="max-height: 400px; object-fit: contain;"></center>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselEjemplo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselEjemplo" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+</main>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card product">
+                <div class="card-body">
+                    <h5 class="card-title">Plan Estandar</h5>
+                    <p class="card-text"><i class="fas fa-tv"></i> 100 canales HD</p>
+                    <p class="card-text"><i class="fas fa-wifi"></i> 50 Mbps de velocidad de navegación</p>
+                    <p class="card-text"><i class="fas fa-phone-alt"></i> Llamadas ilimitadas locales</p>
+                    <p class="card-text"><i class="fas fa-dollar-sign"></i> Precio: $50.000/mes</p>
+                    <p class="card-text"><i class="fas fa-gift"></i> ¡Promoción!: Obtén Netflix gratis por 6 meses</p>
+                    <p class="card-text card-price">$50.000/mes</p>
+                    <!-- Agrega la clase 'btn btn-primary btn-comprar' para el botón -->
+                    <a href="#" class="btn btn-primary btn-comprar add-to-cart" data-name="Estandar Hogar" data-price="50000">Agregar al carrito</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card product">
+                <div class="card-body">
+                    <h5 class="card-title">Plan Intermedio</h5>
+                    <p class="card-text"><i class="fas fa-tv"></i> 200 canales HD</p>
+                    <p class="card-text"><i class="fas fa-wifi"></i> 100 Mbps de velocidad de navegación</p>
+                    <p class="card-text"><i class="fas fa-phone-alt"></i> Llamadas ilimitadas nacionales</p>
+                    <p class="card-text"><i class="fas fa-dollar-sign"></i> Precio: $80.000/mes</p>
+                    <p class="card-text"><i class="fas fa-gift"></i> ¡Promoción!: Obtén HBO gratis por 6 meses</p>
+                    <p class="card-text card-price">$80.000/mes</p>
+                    <br>
+                    <!-- Agrega la clase 'btn btn-primary btn-comprar' para el botón -->
+                    <a href="#" class="btn btn-primary btn-comprar add-to-cart" data-name="Intermedio Hogar" data-price="80000">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card product">
+                <div class="card-body">
+                    <h5 class="card-title">Plan Premium</h5>
+                    <p class="card-text"><i class="fas fa-tv"></i> 300 canales HD</p>
+                    <p class="card-text"><i class="fas fa-wifi"></i> 200 Mbps de velocidad de navegación</p>
+                    <p class="card-text"><i class="fas fa-phone-alt"></i> Llamadas ilimitadas internacionales</p>
+                    <p class="card-text"><i class="fas fa-dollar-sign"></i> Precio: $120.000/mes</p>
+                    <p class="card-text"><i class="fas fa-gift"></i> ¡Promoción!: Obtén Amazon Prime gratis por 6 meses</p>
+                    <p class="card-text card-price">$120.000/mes</p>
+                    <a href="#" class="btn btn-primary btn-comprar add-to-cart" data-name="Premium Hogar" data-price="120000">Agregar al carrito</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="cart-content">
+    <h5 class="mb-3">Carrito de compras</h5>
+    <ul id="cart-items" class="list-unstyled">
+      <!-- Cart items will be appended here -->
+    </ul>
+    <div class="cart-totals">
+      <p>Total de productos: <span id="total-items">0</span></p>
+      <p>Total a pagar: $<span id="total-price">0.00</span></p>
+      <p><a href="carrito.html">Ir al carrito</a></p> 
+    </div>
+  </div>
+
+    
+<!-- Pie de página -->
+<footer>
+    <div class="container text-center">
+        <h3>Tienda Online&copy</h3>
+    </div>
+    </footer>
+    
+    </body>
+    <script src="js/sc.js"></script>
+    <script src="js/bootstrap/bootstrap.bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </html>

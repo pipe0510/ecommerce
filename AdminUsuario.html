@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo_admin.css">
+     <!-- firebase -->
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>  
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+   
+   
+  <!-- llamamos la conexion -->
+  <script src="js/conexion.js"> </script>
+  <script>
+    var db=firebase.firestore();
+    var storage=firebase.storage();
+  </script>
+ 
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mi Tienda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminProductos.html">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminUsuario.html">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminAsesorias.html">Asesorias</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link"  onclick="cerrar()">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div class="container-content">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Consultar Usuarios</h5>
+                    <!-- Filtros de Búsqueda -->
+                    <div class="search-container">
+                        <label for="nameInput">Buscar por Nombre:</label>
+                        <input type="text" id="nameInput" class="form-control" placeholder="Ingrese el nombre del usuario">
+                    </div>
+                    <div class="search-container">
+                        <label for="profileInput">Buscar por Perfil:</label>
+                        <input type="text" id="profileInput" class="form-control" placeholder="Ingrese el perfil del usuario">
+                    </div>
+                    <button id="searchBtn" class="btn btn-primary search-btn">Buscar</button>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Lista de Usuarios</h5>
+                    <div class="table-responsive">
+                        <table id="userTable" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Nombre Completo</th>
+                                    <th>Perfil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><i class="fas fa-trash-alt delete-user"></i></td>
+                                    <td><i class="fas fa-female"></i> Ana García</td> 
+                                    <td>Plan movil-premium</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><i class="fas fa-trash-alt delete-user"></i></td>
+                                    <td><i class="fas fa-male"></i> Juan Martínez</td> 
+                                    <td>Paquete Ciberseguridad</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><i class="fas fa-trash-alt delete-user"></i></td>
+                                    <td><i class="fas fa-male"></i> Marcos López</td> 
+                                    <td>Plan hogar-basico</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><i class="fas fa-trash-alt delete-user"></i></td>
+                                    <td><i class="fas fa-female"></i> Sofia Rodríguez</td> 
+                                    <td>Plan movil-intermedio</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><i class="fas fa-trash-alt delete-user"></i></td>
+                                    <td><i class="fas fa-male"></i> Alejandro Pérez</td> 
+                                    <td>Ciberseguridad movil</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><i class="fas fa-trash-alt delete-user"></i></td>
+                                    <td><i class="fas fa-female"></i> Maria Sánchez</td> 
+                                    <td>Plan hogar-premium</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><i class="fas fa-trash-alt delete-user"></i></td>
+                                    <td><i class="fas fa-male"></i> Carlos Rodríguez</td> 
+                                    <td>Plan hogar-intermedio</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button id="exportBtn" class="btn btn-primary">Exportar a PDF</button>
+                    <button id="saveBtn" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Mi Tienda. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script para buscar usuarios, exportar a PDF y eliminar usuarios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="js/administradorUsuario.js"></script>
+    <script src="js/modu/bloqueo.js"></script>
+    <script src="js/modu/cerrar.js"></script>
+</body>
+</html>

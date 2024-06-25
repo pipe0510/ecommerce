@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo_login.css">
+    <link rel="shortcut icon" href="img/Logo.jpg"  />
+    <!-- firebase -->
+<!-- firebase -->
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>  
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<!-- llamamos la conexion -->
+<script src="js/conexion.js"> </script>
+</head>
+<body>
+    <main class="form-signin w-100 m-auto">
+        <form action="" id="form">
+         <center> <img class="mb-4" src="img/Logo.jpg" alt="" width="92" height="77"></center>
+          <center><h1 class="h3 mb-3 fw-normal "><b> ¡Bienvenido! </b></h1></center>
+      
+          <div class="form-floating">
+            <input type="email" class="form-control" id="email" placeholder="ejemplo@ejemplo.com" required="required">
+            <label for="floatingInput">Correo Electrónico</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="clave" placeholder="contraseña">
+            <label for="floatingPassword">Contraseña</label>
+          </div>
+      
+          <div class="form-check text-start my-3">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault"><b>
+              Recordar Datos
+            </b>
+            </label>
+          </div>
+          <button class="btn btn-dark w-100 py-1" type="submit">Iniciar Sesion</button>
+         
+          <p class="mt-5 mb-3 text-body-secondary">&copy;<b>2020–2024</b></p>
+        </form>
+      </main>
+</body>
+<script src="js/login.js"></script>
+<script src="js/bootstrap/bootstrap.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>
